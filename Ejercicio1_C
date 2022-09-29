@@ -25,15 +25,15 @@ class Program {
           
     switch(menu){
       case 1:
-        Console.WriteLine("GUARDAR UN ELEMENTO \n Escribe los elementos para guaradar ");
+        Console.WriteLine("GUARDAR UN VALOR \n Escribe los valores para guaradar ");
         for (int i = 0; i < array.Length; i++) {
           if(array[i]==0){
-            Console.WriteLine("Escribe un valor");
+            Console.WriteLine("Escribe un valor: ");
             array[i]=int.Parse(Console.ReadLine());
             
-            Console.WriteLine("Escribir otro valor, si o no?");
+            Console.WriteLine("Escribir otro valor, SI/NO?");
             String val=Console.ReadLine();
-            if(val.Equals("no")){
+            if(val.Equals("NO")){
               break;
             }else{
               continue;
@@ -46,7 +46,7 @@ class Program {
           Console.WriteLine("El arreglo está vacío!");
           break;
         }else{
-          Console.WriteLine("ELIMINAR UN ELEMENTO \n Qué número desea eliminar?");
+          Console.WriteLine("ELIMINAR UN VALOR \n Qué número desea eliminar?: ");
           int n=int.Parse(Console.ReadLine());
           int ind=MetodoBuscar(array,n);
           if(ind<0){
@@ -62,14 +62,14 @@ class Program {
           Console.WriteLine("El arreglo está vacío!");
           break;
         }else{
-          Console.WriteLine("BUSCAR ELEMENTO \n Qué número desea encontrar?");
+          Console.WriteLine("BUSCAR VALOR \n Qué número desea encontrar?");
           int o=int.Parse(Console.ReadLine());
           int id=MetodoBuscar(array,o);
           Console.WriteLine("El número que busca esta en el indice "+id);
         }
         break;
       case 4: 
-        Console.WriteLine("ORDENAR ELEMENTOS \n Cómo desea ordener los elementos? \n 1:Ascendente \n 2:Descendente");
+        Console.WriteLine("ORDENAR VALORES \n Cómo desea ordener los valores? \n 1:Ascendente \n 2:Descendente");
         int m=int.Parse(Console.ReadLine());
         array=MetodoOrdenar(array,m);
           
@@ -87,7 +87,7 @@ class Program {
           Console.WriteLine(" El arreglo está vacío!!\n");
           break;
         }else{
-          Console.WriteLine("MODIFICAR \n Que numero desea modificar?");
+          Console.WriteLine("MODIFICAR \n ¿Qué número deseas modificar?");
           int o=int.Parse(Console.ReadLine());
           int id=MetodoBuscar(array,o);
           if(id>0){
@@ -130,6 +130,13 @@ class Program {
                 }
                return indice; 
         }
+   
+  private static int[] MetodoModificar(int[] mod,int i){
+    Console.WriteLine(" Por que valor desea modificarlo?");
+    int val=int.Parse(Console.ReadLine());
+    mod[i]=val;
+    return mod;
+  }
     private static int[] MetodoOrdenar(int[] orden,int val){
       if(val==1){
        Array.Sort(orden); 
@@ -138,11 +145,5 @@ class Program {
       }
       return orden;
     }
-}
-
-private static int[] MetodoModificar(int[] mod,int i){
-    Console.WriteLine(" Por que valor desea modificarlo?");
-    int val=int.Parse(Console.ReadLine());
-    mod[i]=val;
-    return mod;
   }
+}
